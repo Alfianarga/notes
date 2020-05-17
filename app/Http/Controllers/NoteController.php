@@ -35,7 +35,6 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $data = $request->validate([
             'title' => 'required',
             'description' => 'required'
@@ -47,28 +46,6 @@ class NoteController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Note $note)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Note $note)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -77,7 +54,14 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+        $note->update($data);
+
+        return response($note, 200);
     }
 
     /**
